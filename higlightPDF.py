@@ -1,7 +1,8 @@
-import fitz
 import os
 import subprocess
 from time import sleep
+
+import fitz
 
 # READ IN PDF
 doc = fitz.open(os.path.join(
@@ -37,6 +38,8 @@ _highlight(items_to_highlight)
 # OUTPUT
 doc.save(os.path.join(os.path.expanduser('~'), 'Downloads') +
          "\\output.pdf", garbage=4, deflate=True, clean=True)
+
+doc.close()  # close as otherwise you won't be able to delete it
 
 # print the pdf with markup
 os.startfile(os.path.join(os.path.expanduser('~'),
