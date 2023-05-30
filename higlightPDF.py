@@ -42,19 +42,16 @@ doc.save(os.path.join(os.path.expanduser('~'), 'Downloads') +
 doc.close()  # close as otherwise you won't be able to delete it
 
 # print the pdf with markup
+# could use win32print to print silently, but it works fine as it is
 os.startfile(os.path.join(os.path.expanduser('~'),
                           'Downloads') + "\\output.pdf", "print")
+
+sleep(20)
+
 # now make sure to close that foxit window. It works, and closes the window no matter what
-# could use win32print to print silently, but it works fine as it is
-
-sleep(20)  # sleeps 10 seconds
-
 subprocess.call("taskkill /f /im FoxitReader.exe", shell=True)
 
 sleep(15)
 
-os.remove((os.path.expanduser('~') + "\\Downloads") + "\\MyPDF.PDF")
-
 # now delete the input file
-
-# Todo have it include debug information, when and by who it was printed
+os.remove((os.path.expanduser('~') + "\\Downloads") + "\\MyPDF.PDF")
